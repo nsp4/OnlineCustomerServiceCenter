@@ -29,7 +29,7 @@ public class CustomerServiceTest {
 		cu.setFirstName("sai");
 		cu.setLastName("krishna");
 		cu.setEmail("sai@123");
-		cu.setMobile("56784");
+		cu.setMobile(56784);
 		cu.setCity("kadapa");
 		Mockito.when(repository.save(cu)).thenReturn(cu);
 		assertThat(service.registerCustomer(cu)).isEqualTo(cu);

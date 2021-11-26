@@ -31,7 +31,7 @@ public class Customer implements Serializable {
 	private String email;
 
 	@Column(name = "mobile")
-	private String mobile;
+	private long mobile;
 
 	@Column(name = "city")
 	private String city;
@@ -68,11 +68,11 @@ public class Customer implements Serializable {
 		this.email = email;
 	}
 
-	public String getMobile() {
+	public long getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(String mobile) {
+	public void setMobile(long mobile) {
 		this.mobile = mobile;
 	}
 
