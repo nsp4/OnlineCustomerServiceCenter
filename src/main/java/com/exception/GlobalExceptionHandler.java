@@ -28,7 +28,8 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(InvalidCredintialException.class)
     public ResponseEntity<?> invalidcredintialException(InvalidCredintialException ex, WebRequest request) {
-         ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(),
+				ex.getMessage(), request.getDescription(false));
          return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
     @ExceptionHandler(IssueNotFoundException.class)

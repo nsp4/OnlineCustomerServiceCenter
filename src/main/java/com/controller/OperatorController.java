@@ -28,7 +28,7 @@ public class OperatorController {
 	@PostMapping("/login")
 	public ResponseEntity<Login> addOperator(@RequestBody Login c) throws InvalidCredintialException
 	{
-		Login l1=operatorService.login(c);
+		Login l1 = operatorService.login(c);
 		ResponseEntity re=new ResponseEntity<Login>(l1,HttpStatus.OK);
 		return re;
 	}

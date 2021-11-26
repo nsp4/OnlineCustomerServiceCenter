@@ -78,7 +78,7 @@ public class AdminController {
 	}
 	@GetMapping("getOperators")
 	public ResponseEntity<List<Operator>> findAllOperators(){
-	List<Operator> lo=adminService.findAllOperators();
+		List<Operator> lo = adminService.findAllOperators();
 	ResponseEntity re=new ResponseEntity<List<Operator>>(lo,HttpStatus.OK);
 	return re;
 }

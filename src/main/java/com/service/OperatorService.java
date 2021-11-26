@@ -65,7 +65,7 @@ public class OperatorService {
 	public Customer findCustomerById(int customerId)throws Throwable
 	{
 		Supplier s1= ()->new CustomerNotFoundException("customer Does not exist in the database");
-		Customer c=repo2.findById(customerId).orElseThrow(s1);
+		Customer c = repo2.findById(customerId).orElseThrow(s1);
 		return c;
 	}
 	public List<Customer> findCustomerByName(String firstName)throws CustomerNotFoundException
