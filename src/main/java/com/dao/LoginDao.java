@@ -10,4 +10,6 @@ public interface LoginDao extends JpaRepository<Login, Integer> {
 //Login changePassword(Login login);
 	//Login save(String login);
 
+	
+
 }

@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.dao.CustomerDao;
 import com.dao.IssueDao;
 import com.dao.LoginDao;
+import com.exception.CustomerNotFoundException;
 import com.exception.DuplicateCustomerException;
 import com.exception.InvalidCredintialException;
 import com.exception.IssueNotFoundException;
@@ -27,7 +29,31 @@ public class CustomerService {
 		repo.save(customer);
 		return customer;
 	}
-
+	public List<Customer> getAllCustomers(){
+		List<Customer> c=repo.findAll();
+		return c;
+		}
+	public Customer modifyCustomer(Customer customer) {
+		int customerId = customer.getCustomerId();
+		Optional<Customer> optional = rep.findById(customerId);
+		if (optional.isPresent()) {
+			Customer o = optional.get();
+			o.setFirstName(customer.getFirstName());
+			o.setLastName(customer.getLastName());
+			o.setCustomerId(customer.getCustomerId());
+			o.setEmail(customer.getEmail());
+			o.setMobile(customer.getMobile());
+			o.setCity(customer.getCity());
+			return rep.save(o);
+		}
+		return null;
+	}
+	//delete customer
+	public Customer removeCustomer(int customerId) {
+		Customer c = rep.findById(customerId).get();
+		rep.deleteById(customerId);
+		return c;
+	}
 	@Autowired
 	IssueDao repo1;
 
@@ -47,15 +73,16 @@ public class CustomerService {
 		Issue c = repo1.findById(issueId).orElseThrow(s1);
 		return c;
 	}
+	
 
 	@Autowired
 	LoginDao repo2;
 
-	public String login(Login login) throws InvalidCredintialException
+	public Login login(Login userId) throws InvalidCredintialException
 
 	{
-		repo2.save(login);
-		return "login success";
+		Login l=repo2.save(userId);
+		;return l;
 	}
 
 	public Login changePassword(Login userName) {
@@ -76,5 +103,6 @@ public class CustomerService {
 		rep.findById(customerId);
 		return "forgot password";
 	}
+	
 
 }

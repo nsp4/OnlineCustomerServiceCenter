@@ -1,5 +1,4 @@
 package com.service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -25,11 +24,10 @@ public class AdminService {
 		return true;
 	}
 
-	// remove department
-	public boolean removeDepartment(int departmentId) throws Throwable {
-		Supplier s1 = () -> new DepartmentNotFoundException("department Does not exist in the database");
-		Department d = dao.findById(departmentId).orElseThrow(s1);
-		return true;
+	public Department removeDepartment(int departmentId) {
+		Department d = dao.findById(departmentId).get();
+		dao.deleteById(departmentId);
+		return d;
 	}
 
 	// modify departmnet
@@ -64,10 +62,11 @@ public class AdminService {
 	}
 
 	// remove operator
-	public boolean removeOperator(int operatorId) throws Throwable {
-		Supplier s1 = () -> new DepartmentNotFoundException("departmetn Does not exist in the database");
-		Operator d = op.findById(operatorId).orElseThrow(s1);
-		return true;
+
+	public Operator removeOperator(int operatorId) {
+		Operator o = op.findById(operatorId).get();
+		op.deleteById(operatorId);
+		return o;
 	}
 
 	// modify operator
@@ -85,7 +84,7 @@ public class AdminService {
 			o.setDepartment(operator.getDepartment());
 			return op.save(o);
 		}
-		return null;
+		return operator;
 	}
 
 	// finding operator by id
@@ -101,4 +100,5 @@ public class AdminService {
 		return op1;
 
 	}
+
 }

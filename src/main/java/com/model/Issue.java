@@ -11,6 +11,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "issue")
 public class Issue implements Serializable {
+	public Issue(int issueId, String issueType, String description, String issueStatus) {
+		super();
+		this.issueId = issueId;
+		this.issueType = issueType;
+		this.description = description;
+		this.issueStatus = issueStatus;
+	}
+
 	/**
 	 * 
 	 */

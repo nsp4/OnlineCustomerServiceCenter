@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,6 +26,8 @@ public class Operator implements Serializable {
 	private String email;
 	private String mobile;
 	private String city;
+	
+	
 
 	@OneToOne(targetEntity = Department.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "department_id")

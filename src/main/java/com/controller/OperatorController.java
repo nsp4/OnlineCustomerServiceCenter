@@ -25,13 +25,9 @@ import com.service.OperatorService;
 public class OperatorController {
 	@Autowired
 	OperatorService operatorService;
-	@PostMapping("/login")
-	public ResponseEntity<Login> addOperator(@RequestBody Login c) throws InvalidCredintialException
-	{
-		Login l1 = operatorService.login(c);
-		ResponseEntity re=new ResponseEntity<Login>(l1,HttpStatus.OK);
-		return re;
-	}
+	
+	
+	
 	@PostMapping("/addCustomerIssue")
 	public ResponseEntity<Issue>addCustomerIssue(@RequestBody Issue issue){
 		Issue i1=operatorService.addCustomerIssue(issue);
@@ -60,7 +56,7 @@ public class OperatorController {
 		ResponseEntity re= new ResponseEntity<Customer>(c,HttpStatus.OK);
 		return re;
 	}
-	@GetMapping("getCustomer")
+	@GetMapping(path="getCustomer")
 	public ResponseEntity<List<Customer>> findCustomerByName(String firstName) throws Throwable{
 	List<Customer> lc=operatorService.findCustomerByName(firstName);
 	ResponseEntity re=new ResponseEntity<List<Customer>>(lc,HttpStatus.OK);

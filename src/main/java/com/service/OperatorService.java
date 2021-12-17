@@ -15,16 +15,13 @@ import com.exception.IssueNotFoundException;
 import com.model.Customer;
 import com.model.Issue;
 import com.model.Login;
+import com.model.Operator;
 
 @Service
 public class OperatorService {
-	@Autowired
-	LoginDao repo;
-	public Login login(Login c)throws InvalidCredintialException
-	{
-		repo.save(c);
-		return c;
-	}
+	
+	
+	
 	@Autowired
 	IssueDao repo1;
 	public Issue addCustomerIssue(Issue issue) {
